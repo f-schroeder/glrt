@@ -5,6 +5,6 @@ It makes use of modern C++ features as well as AZDO and bindless techniques in O
 
 ## Dependencies
 
-GLRT uses of Assimp, GLM, GLFW, ImGUI and globjects. These libraries have to be installed using [vcpkg](https://docs.microsoft.com/en-us/cpp/vcpkg).
+GLRT uses Assimp, GLM, GLFW, ImGUI and globjects. These libraries have to be installed using [vcpkg](https://docs.microsoft.com/en-us/cpp/vcpkg).
 
 Currently only Visual Studio 2017 is supported.
