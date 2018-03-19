@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLRT", "GLRT\GLRT.vcxproj", "{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "executables", "executables", "{491C0EF0-7CE6-4A75-960A-F669CEED94EB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SVOGI", "executables\SVOGI\SVOGI.vcxproj", "{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C} = {DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{4F6AFD25-04A8-4464-B2E1-C0B6BADC5AC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "models", "models", "{DD838A16-DD20-4A76-B2BB-CDA1F490654A}"
+	ProjectSection(SolutionItems) = preProject
+		resources\models\bunny.fbx = resources\models\bunny.fbx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{16690633-BD89-40F8-B5A0-DAB1447B7253}"
+	ProjectSection(SolutionItems) = preProject
+		resources\textures\cv_logo.bmp = resources\textures\cv_logo.bmp
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Debug|x64.ActiveCfg = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Debug|x64.Build.0 = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Debug|x86.ActiveCfg = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Debug|x86.Build.0 = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Release|x64.ActiveCfg = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Release|x64.Build.0 = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Release|x86.ActiveCfg = Debug|x64
+		{DFE69B93-ECE1-4FF4-97E2-EC167AED7F3C}.Release|x86.Build.0 = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Debug|x64.ActiveCfg = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Debug|x64.Build.0 = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Debug|x86.ActiveCfg = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Debug|x86.Build.0 = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Release|x64.ActiveCfg = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Release|x64.Build.0 = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Release|x86.ActiveCfg = Debug|x64
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD}.Release|x86.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{10C589CE-DC2E-4D82-9DF0-39DF232D50BD} = {491C0EF0-7CE6-4A75-960A-F669CEED94EB}
+		{DD838A16-DD20-4A76-B2BB-CDA1F490654A} = {4F6AFD25-04A8-4464-B2E1-C0B6BADC5AC2}
+		{16690633-BD89-40F8-B5A0-DAB1447B7253} = {4F6AFD25-04A8-4464-B2E1-C0B6BADC5AC2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0F35650-D0BF-49B1-8ABA-5F7001777891}
+	EndGlobalSection
+EndGlobal
