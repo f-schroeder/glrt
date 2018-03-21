@@ -1,6 +1,6 @@
 # GLRT - OpenGL 4 Ray Tracing Framework
 
-GLRT is a C++17 framework for quick and easy development of OpenGL4-based ray tracing applications.
+GLRT is a header-only C++17 framework for quick and easy development of OpenGL4-based ray tracing applications.
 It makes use of modern C++ features as well as AZDO and bindless techniques in OpenGL.
 
 ## Dependencies
