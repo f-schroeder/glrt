@@ -123,10 +123,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GLRT.hpp" />
     <ClInclude Include="Utils\Window.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Utils\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\GBuffer\gBuffer.frag" />

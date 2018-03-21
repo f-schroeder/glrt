@@ -1,9 +1,9 @@
-#include <Utils/Window.hpp>
+#include <GLRT/Utils/Window.hpp>
 
 int main() {
-	glrt::Window &w = glrt::Window::initInstance("SVOGI");
+	auto w = glrt::Window::makeWindow("SVOGI");
 
-	w.loop([](float deltaTime) {});
+	w->loop([](float deltaTime) {});
 
 	return 0;
 }
