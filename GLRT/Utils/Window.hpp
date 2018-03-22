@@ -73,7 +73,7 @@ namespace glrt {
 			if (!glfwInit()) {
 				globjects::critical() << "GLFW init failed. Terminate execution.";
 				std::cin.ignore();
-				exit(0);
+				throw std::runtime_error("GLFW init failed. Terminate execution.");
 			}
 
 			glfwSetErrorCallback(glfw_error_callback);
@@ -91,7 +91,7 @@ namespace glrt {
 
 				glfwTerminate();
 				std::cin.ignore();
-				exit(0);
+				throw std::runtime_error("Context creation failed. Terminate execution.");
 			}
 
 			// Initialize callbacks

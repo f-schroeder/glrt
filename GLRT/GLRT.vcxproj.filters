@@ -24,6 +24,9 @@
     <ClInclude Include="GLRT.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\AssetLoader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\ScreenFilling\screenFilling.vert" />

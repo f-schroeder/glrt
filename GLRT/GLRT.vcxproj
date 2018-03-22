@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GLRT.hpp" />
+    <ClInclude Include="Utils\AssetLoader.hpp" />
     <ClInclude Include="Utils\Window.hpp" />
   </ItemGroup>
   <ItemGroup>
