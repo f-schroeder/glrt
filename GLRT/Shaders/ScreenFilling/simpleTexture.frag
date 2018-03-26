@@ -1,12 +1,12 @@
 #version 450
+#extension GL_ARB_bindless_texture : require
 
-in vec2 passUVCoord;
+layout(bindless_sampler) uniform sampler2D sfq_texture;
 
-uniform sampler2D colortexture;
-
+in vec2 uvCoord;
 out vec4 fragmentColor;
 
 void main() {
-    fragmentColor = texture(colortexture, passUVCoord);
-	//fragmentColor = vec4( 1, 0, 0, 1);
+    fragmentColor = texture(sfq_texture, uvCoord);
+	//fragmentColor = vec4(uvCoord, 0, 1);
 }

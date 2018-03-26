@@ -123,8 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GLRT.hpp" />
+    <ClInclude Include="GLRT_Dependencies.hpp" />
+    <ClInclude Include="Rendering\ScreenFillingQuad.hpp" />
     <ClInclude Include="Utils\AssetLoader.hpp" />
+    <ClInclude Include="Utils\Helpers.hpp" />
     <ClInclude Include="Utils\Window.hpp" />
   </ItemGroup>
   <ItemGroup>

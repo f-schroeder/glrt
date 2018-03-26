@@ -1,11 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <glbinding/ContextInfo.h>
-#include <glbinding/Version.h>
-#include <globjects/globjects.h>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
+#include <GLRT/GLRT_Dependencies.hpp>
 #include <unordered_set>
 
 namespace glrt {

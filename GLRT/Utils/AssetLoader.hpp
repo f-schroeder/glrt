@@ -2,6 +2,9 @@
 #include <filesystem>
 #include <vector>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
+
 namespace glrt {
 
 	namespace fs = std::experimental::filesystem;
@@ -22,6 +25,34 @@ namespace glrt {
 							return fs::absolute(file.path()).string();					
 			throw std::runtime_error("AssetLoader could not find a file with the name " + filename);
 		}
+
+		struct ImageData
+		{
+			int width, height, numChannels;
+			std::vector<glm::vec4> data;
+
+			glm::vec4 operator()(int x, int y) { return data[y * width + x]; }
+
+			ImageData(std::string filename)
+			{
+				load(filename);
+			}
+
+			void load(std::string filename)
+			{
+				stbi_set_flip_vertically_on_load(true);
+				unsigned char* raw_data = stbi_load(filename.c_str(), &width, &height, &numChannels, 4);
+				data.resize(width * height, glm::vec4(0.f));
+
+				#pragma omp parallel for
+				for (int i = 0; i < width * height; ++i)
+				{
+					int index = i * 4;
+					data[i] = glm::vec4(raw_data[index], raw_data[index+1], raw_data[index+2], raw_data[index+3]) / 255.f;
+				}
+				stbi_image_free(raw_data);
+			}
+		};
 
 	private:
 		AssetLoader(); //only static access
