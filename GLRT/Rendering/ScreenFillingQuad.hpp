@@ -2,15 +2,17 @@
 
 #include "../GLRT_Dependencies.hpp"
 #include "../Utils/AssetLoader.hpp"
+#include "../Utils/Window.hpp"
 #include <globjects/VertexAttributeBinding.h>
 #include <globjects/TextureHandle.h>
 #include <globjects/Texture.h>
+#include <globjects/base/File.h>
 
 using namespace globjects;
 
 namespace glrt {
 
-	class ScreenFillingQuad
+	class ScreenFillingQuad : public WindowEventHandler
 	{
 	public:
 		ScreenFillingQuad()
@@ -63,6 +65,18 @@ namespace glrt {
 			auto handle = texture->textureHandle();
 			if (!handle.isResident())
 				handle.makeResident();
+		}
+
+		void key_callback(int key, int scancode, int action, int mods) override
+		{
+			if (key == GLFW_KEY_F5 && action == GLFW_RELEASE)
+			{
+				for (auto& s : shaderProgram->shaders())
+					if (auto f = dynamic_cast<File*>(const_cast<AbstractStringSource*>(s->source())))
+						f->reload();
+
+				info() << "Reloaded screen filling quad shader program \n";
+			}
 		}
 
 	private:
