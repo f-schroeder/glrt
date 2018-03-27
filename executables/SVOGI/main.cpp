@@ -9,7 +9,6 @@ int main() {
 	auto w = glrt::Window::makeWindow("SVOGI");
 
 	auto q = std::make_shared<glrt::ScreenFillingQuad>();
-	w->addEventHandler(q);
 
 	auto img = glrt::AssetLoader::ImageData(glrt::AssetLoader::find("cv_logo.bmp"));
 

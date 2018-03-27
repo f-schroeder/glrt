@@ -17,6 +17,7 @@
 #include <globjects/glmlogging.h>
 #include <globjects/glbindinglogging.h>
 #include <globjects/objectlogging.h>
+#include <globjects/globjects-version.h>
 
 //glm
 #include <glm/glm.hpp>

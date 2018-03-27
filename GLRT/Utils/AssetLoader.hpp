@@ -1,4 +1,6 @@
 #pragma once
+#include <GLRT/GLRT_Dependencies.hpp>
+
 #include <filesystem>
 #include <vector>
 
@@ -26,8 +28,9 @@ namespace glrt {
 			throw std::runtime_error("AssetLoader could not find a file with the name " + filename);
 		}
 
-		struct ImageData
+		class ImageData
 		{
+		public:
 			int width, height, numChannels;
 			std::vector<glm::vec4> data;
 
@@ -54,7 +57,7 @@ namespace glrt {
 			}
 		};
 
-	private:
-		AssetLoader(); //only static access
+	protected:
+		AssetLoader() {} //only static access
 	};
 }

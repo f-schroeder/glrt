@@ -2,6 +2,7 @@
 
 #include <GLRT/GLRT_Dependencies.hpp>
 #include <unordered_set>
+#include <globjects/base/File.h>
 
 namespace glrt {
 
@@ -106,7 +107,8 @@ namespace glrt {
 			std::cout << '\n'
 				<< "OpenGL Version:  " << glbinding::ContextInfo::version() << '\n'
 				<< "OpenGL Vendor:   " << glbinding::ContextInfo::vendor() << '\n'
-				<< "OpenGL Renderer: " << glbinding::ContextInfo::renderer() << '\n' << '\n';
+				<< "OpenGL Renderer: " << glbinding::ContextInfo::renderer() << '\n'
+				<< "globjects Version: " << GLOBJECTS_NAME_VERSION << '\n' << '\n';
 
 			globjects::DebugMessage::enable();
 		}
@@ -116,6 +118,8 @@ namespace glrt {
 		{
 			if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 				glfwSetWindowShouldClose(glfwWindow, 1);
+			if (key == GLFW_KEY_F5 && action == GLFW_RELEASE)
+				globjects::File::reloadAll();
 		}
 
 		std::vector<WindowEventHandler_ptr> eventHandlers;
