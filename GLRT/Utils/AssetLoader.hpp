@@ -1,8 +1,8 @@
 #pragma once
-#include <GLRT/GLRT_Dependencies.hpp>
+#include "../GLRT_Dependencies.hpp"
 
 #include <filesystem>
-#include <vector>
+#include <ppl.h>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
@@ -47,12 +47,10 @@ namespace glrt {
 				unsigned char* raw_data = stbi_load(filename.c_str(), &width, &height, &numChannels, 4);
 				data.resize(width * height, glm::vec4(0.f));
 
-				#pragma omp parallel for
-				for (int i = 0; i < width * height; ++i)
-				{
-					int index = i * 4;
+				concurrency::parallel_for(size_t(0), size_t(width * height), [&](size_t i) {
+					size_t index = i * 4;
 					data[i] = glm::vec4(raw_data[index], raw_data[index+1], raw_data[index+2], raw_data[index+3]) / 255.f;
-				}
+				});
 				stbi_image_free(raw_data);
 			}
 		};

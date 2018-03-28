@@ -123,6 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scenery\Camera.hpp" />
+    <ClInclude Include="Scenery\Geometry.hpp" />
+    <ClInclude Include="Scenery\Material.hpp" />
+    <ClInclude Include="Scenery\Node.hpp" />
+    <ClInclude Include="Scenery\Scene.hpp" />
     <ClInclude Include="GLRT_Dependencies.hpp" />
     <ClInclude Include="Rendering\ScreenFillingQuad.hpp" />
     <ClInclude Include="Utils\AssetLoader.hpp" />

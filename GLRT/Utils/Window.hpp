@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GLRT/GLRT_Dependencies.hpp>
+#include "../GLRT_Dependencies.hpp"
 #include <unordered_set>
 #include <globjects/base/File.h>
 

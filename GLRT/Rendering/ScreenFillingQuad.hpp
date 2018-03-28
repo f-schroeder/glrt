@@ -1,7 +1,7 @@
 #pragma once
 
-#include <GLRT/GLRT_Dependencies.hpp>
-#include <GLRT/Utils/AssetLoader.hpp>
+#include "../GLRT_Dependencies.hpp"
+#include "../Utils/AssetLoader.hpp"
 #include <globjects/VertexAttributeBinding.h>
 #include <globjects/TextureHandle.h>
 #include <globjects/Texture.h>
@@ -15,7 +15,7 @@ namespace glrt {
 	public:
 		ScreenFillingQuad()
 		{
-			auto program = std::shared_ptr<Program>(new Program(), DelFunc);
+			auto program = Program_ptr(new Program(), DelFunc);
 			program->attach(
 				Shader::fromFile(gl::GL_VERTEX_SHADER, AssetLoader::find("screenFilling.vert")),
 				Shader::fromFile(gl::GL_FRAGMENT_SHADER, AssetLoader::find("simpleTexture.frag"))
@@ -24,7 +24,7 @@ namespace glrt {
 			init(program);
 		}
 
-		ScreenFillingQuad(std::shared_ptr<Shader> fragmentShader)
+		ScreenFillingQuad(Shader_ptr fragmentShader)
 		{
 			if(fragmentShader->type() != gl::GL_FRAGMENT_SHADER)
 			{
@@ -33,7 +33,7 @@ namespace glrt {
 				throw std::runtime_error("Initializing ScreenFillingQuad object without fragment shader.");
 			}
 
-			auto program = std::shared_ptr<Program>(new Program(), DelFunc);
+			auto program = Program_ptr(new Program(), DelFunc);
 			program->attach(
 				Shader::fromFile(gl::GL_VERTEX_SHADER, AssetLoader::find("screenFilling.vert")),
 				fragmentShader.get()
@@ -42,7 +42,7 @@ namespace glrt {
 			init(program);
 		}
 
-		ScreenFillingQuad(std::shared_ptr<Program> shaderProgram)
+		ScreenFillingQuad(Program_ptr shaderProgram)
 		{
 			init(shaderProgram);
 		}
@@ -57,7 +57,7 @@ namespace glrt {
 			shaderProgram->release();
 		}
 
-		void setTexture(std::shared_ptr<Texture> texture)
+		void setTexture(Texture_ptr texture)
 		{
 			this->texture = texture;
 			auto handle = texture->textureHandle();
@@ -67,13 +67,13 @@ namespace glrt {
 
 	private:
 
-		void init(std::shared_ptr<Program> shaderProgram)
+		void init(Program_ptr shaderProgram)
 		{
 			this->shaderProgram = shaderProgram;
 
 			static const std::array<glm::vec2, 4> raw{ { glm::vec2(+1.f,-1.f), glm::vec2(+1.f,+1.f), glm::vec2(-1.f,-1.f), glm::vec2(-1.f,+1.f) } };
 
-			vao = std::shared_ptr<VertexArray>(new VertexArray(), DelFunc);
+			vao = VertexArray_ptr(new VertexArray(), DelFunc);
 
 			auto buffer = new Buffer();
 			buffer->setData(raw, gl::GL_STATIC_DRAW); //needed for some drivers
@@ -85,8 +85,8 @@ namespace glrt {
 			vao->enable(0);
 		}
 
-		std::shared_ptr<Program> shaderProgram;
-		std::shared_ptr<VertexArray> vao;
-		std::shared_ptr<Texture> texture;
+		Program_ptr shaderProgram;
+		VertexArray_ptr vao;
+		Texture_ptr texture;
 	};
 }
