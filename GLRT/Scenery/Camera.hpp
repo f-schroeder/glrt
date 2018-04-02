@@ -11,10 +11,10 @@ namespace glrt
 	class Camera : public WindowEventHandler
 	{
 	public:
-
-	private:
 		glm::mat4 viewMatrix;
 		glm::mat4 projectionMatrix;
+
+	private:		
 
 	};
 }

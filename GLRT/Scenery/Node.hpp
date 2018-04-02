@@ -14,9 +14,6 @@ namespace glrt
 	public:
 		Geometry_ptr geometry;
 		Material_ptr material;
-		glm::mat4 modelMatrix;
-
-	private:
-		
+		glm::mat4 modelMatrix;		
 	};
 }

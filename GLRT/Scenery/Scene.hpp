@@ -18,6 +18,9 @@ namespace glrt
 	class Scene
 	{
 	public:
+		Camera_ptr camera;
+		std::vector<Node_ptr> nodes;
+
 		static Scene_ptr fromFile(std::string filename)
 		{
 			Scene_ptr resultScene = std::make_shared<Scene>();
@@ -71,7 +74,8 @@ namespace glrt
 						if (mesh->HasTextureCoords(0)) geo->uvs[v] = glm::vec2(mesh->mTextureCoords[0][v].x, mesh->mTextureCoords[0][v].y);
 				});
 
-				/*for (size_t v = 0; v < mesh->mNumVertices; v++)
+				/*#pragma omp parallel for
+				for (int v = 0; v < mesh->mNumVertices; v++)
 				{
 					if (mesh->HasPositions()) geo->vertices[v] = glm::vec4(mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z, 1.0f);
 					if (mesh->HasNormals()) geo->normals[v] = glm::vec4(mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z, 0.0f);
@@ -86,12 +90,20 @@ namespace glrt
 						geo->indices[f * 3 + 1] = mesh->mFaces[f].mIndices[1];
 						geo->indices[f * 3 + 2] = mesh->mFaces[f].mIndices[2];
 					});
+
+					/*#pragma omp parallel for
+					for (int f = 0; f < mesh->mNumFaces; ++f) {
+						geo->indices[f * 3 + 0] = mesh->mFaces[f].mIndices[0];
+						geo->indices[f * 3 + 1] = mesh->mFaces[f].mIndices[1];
+						geo->indices[f * 3 + 2] = mesh->mFaces[f].mIndices[2];
+					}*/
 				}
 
 				geo->uploadToGPU();
 
 				Node_ptr node = std::make_shared<Node>();
 				node->geometry = geo;
+				//TODO: Modelmatrix
 				resultScene->addNode(node);
 
 				//TODO: Material
@@ -105,19 +117,5 @@ namespace glrt
 		{
 			nodes.push_back(node);
 		}
-
-		void setCamera(Camera_ptr cam)
-		{
-			camera = cam;
-		}
-
-		Camera_ptr getCamera()
-		{
-			return camera;
-		}
-
-	private:
-		std::vector<Node_ptr> nodes;
-		Camera_ptr camera;
 	};
 }

@@ -26,7 +26,7 @@ namespace glrt {
 	{
 
 	public:
-		
+
 		static Window_ptr makeWindow(const std::string & title = "OpenGL Window", glm::ivec2 size = glm::vec2(800, 600))
 		{
 			Window_ptr w(new Window(title, size));
@@ -50,10 +50,10 @@ namespace glrt {
 			glfwTerminate();
 		}
 
-		void setSize(glm::ivec2 newSize) { size = newSize; gl::glViewport(0, 0, size.x, size.y); }
-		glm::vec2 getSize() const { return size; }
-
 		void addEventHandler(WindowEventHandler_ptr handler) { eventHandlers.push_back(handler); }
+
+		glm::ivec2 getSize() const { return size; }
+		void setSize(glm::ivec2 size) { this->size = size; gl::glViewport(0, 0, size.x, size.y); }
 
 		virtual ~Window() 
 		{
@@ -103,6 +103,7 @@ namespace glrt {
 
 			// Initialize globjects (internally initializes glbinding, and registers the current context)
 			globjects::init();
+			setSize(size);
 
 			std::cout << '\n'
 				<< "OpenGL Version:  " << glbinding::ContextInfo::version() << '\n'
@@ -125,6 +126,7 @@ namespace glrt {
 		std::vector<WindowEventHandler_ptr> eventHandlers;
 
 		glm::ivec2 size;
+
 		GLFWwindow* glfwWindow;
 
 

@@ -33,15 +33,12 @@ namespace glrt
 			if (activeBuffers & geo_Buffer_UV)		uvBuffer = Buffer_ptr(new globjects::Buffer, DelFunc);
 		}
 
-		void uploadToGPU()
+		void uploadToGPU() const
 		{
 			if (indexBuffer)	indexBuffer->setStorage<gl::GLuint>(indices, gl::BufferStorageMask::GL_NONE_BIT);
 			if (vertexBuffer)	vertexBuffer->setStorage<glm::vec4>(vertices, gl::BufferStorageMask::GL_NONE_BIT);
 			if (normalsBuffer)	normalsBuffer->setStorage<glm::vec4>(normals, gl::BufferStorageMask::GL_NONE_BIT);
 			if (uvBuffer)		uvBuffer->setStorage<glm::vec2>(uvs, gl::BufferStorageMask::GL_NONE_BIT);
-		}
-
-	private:
-		
+		}		
 	};
 }

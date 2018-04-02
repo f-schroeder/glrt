@@ -13,3 +13,13 @@ static void DelFunc(globjects::Object * o)
 	o->detach();
 	o->destroy();
 }
+
+// Calls the provided work function and returns the number of milliseconds 
+// that it takes to call that function.
+template <class Function>
+double time_call(Function&& f)
+{
+	double begin = glfwGetTime();
+	f();
+	return glfwGetTime() - begin;
+}
