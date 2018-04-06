@@ -30,10 +30,10 @@ namespace glrt
 				//aiProcess_CalcTangentSpace |
 				aiProcess_GenSmoothNormals |
 				aiProcess_JoinIdenticalVertices |
-				aiProcess_ImproveCacheLocality |
+				//aiProcess_ImproveCacheLocality |
 				//aiProcess_LimitBoneWeights |
 				//aiProcess_RemoveRedundantMaterials |
-				aiProcess_SplitLargeMeshes |
+				//aiProcess_SplitLargeMeshes |
 				aiProcess_Triangulate |
 				aiProcess_GenUVCoords |
 				//aiProcess_SortByPType |
@@ -57,10 +57,10 @@ namespace glrt
 
 				int activeBuffers = 
 					Geometry::geo_Buffer_None
-					| (int(mesh->HasPositions()) & Geometry::geo_Buffer_Index)
-					| (int(mesh->HasPositions()) & Geometry::geo_Buffer_Vertex)
-					| (int(mesh->HasNormals()) & Geometry::geo_Buffer_Normals)
-					| (int(mesh->HasTextureCoords(0)) & Geometry::geo_Buffer_UV);
+					| (int(mesh->HasPositions()) ? Geometry::geo_Buffer_Index : 0)
+					| (int(mesh->HasPositions()) ? Geometry::geo_Buffer_Vertex : 0)
+					| (int(mesh->HasNormals()) ? Geometry::geo_Buffer_Normals : 0)
+					| (int(mesh->HasTextureCoords(0)) ? Geometry::geo_Buffer_UV : 0);
 
 				auto geo = std::make_shared<Geometry>(activeBuffers);
 
@@ -103,7 +103,6 @@ namespace glrt
 
 				Node_ptr node = std::make_shared<Node>();
 				node->geometry = geo;
-				//TODO: Modelmatrix
 				resultScene->addNode(node);
 
 				//TODO: Material
@@ -116,6 +115,11 @@ namespace glrt
 		void addNode(Node_ptr node)
 		{
 			nodes.push_back(node);
+		}
+
+		void draw()
+		{
+			std::for_each(nodes.begin(), nodes.end(), [](Node_ptr& node) { node->draw(); });
 		}
 	};
 }
